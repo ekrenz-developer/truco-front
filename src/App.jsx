@@ -1,7 +1,14 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Home from './containers/Home';
 
 const App = () => (
-  <h1>Aplicacion de Erik</h1>
+  <Router>
+    <Switch>
+      <Route exact path='/' component={Home} />
+    </Switch>
+  </Router>
 );
 
 export default App;
