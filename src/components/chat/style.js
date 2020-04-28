@@ -1,9 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const style = makeStyles({
-  title: {
-    marginLeft: 8,
-    flexGrow: 1
+  container: {
+    height: '100%',
+    width: '100%'
   }
 })
 

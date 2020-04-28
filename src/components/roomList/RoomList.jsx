@@ -10,9 +10,9 @@ const RoomList = ({ rooms }) => {
     <GridList className={classes.roomList} cols={4.5} cellHeight={45}>
       {
         rooms.map((room, index) => (
-          <GridListTile className={classes.roomContainer} key={index}>
+          <GridListTile className={classes.roomContainer} key={room.id}>
             <Button className={classes.roomButton} variant='outlined' color='primary'>
-              <Typography>{room.title}</Typography>
+              {room.title}
             </Button>
           </GridListTile>
         ))
