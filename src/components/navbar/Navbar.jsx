@@ -8,7 +8,7 @@ const Navbar = () => {
   const classes = useStyle();
 
   return (
-    <AppBar position='static'>
+    <AppBar position='fixed' className={classes.appBar}>
       <Toolbar>
         <IconButton edge='start' color='inherit' aria-label='menu'>
           <Menu />

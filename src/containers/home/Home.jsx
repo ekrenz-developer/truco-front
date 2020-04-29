@@ -55,15 +55,23 @@ const Home = () => {
     <Chat show={chatOpen} />
   */
   return (
+    <React.Fragment>
+    
     <Grid container className={classes.container}>
+      <Navbar />
       <Grid item className={classes.header}>
-        <Navbar handleChatOpen={handleChatOpen} />
+        
+      </Grid>
+      {/*
+      <Grid item className={classes.header}> 
         <RoomList rooms={rooms} />
       </Grid>
+      */}
       <Grid item className={classes.room}>
         <Room {...currentRoom} handleChatOpen={handleChatOpen} />
       </Grid>
     </Grid>
+    </React.Fragment>
   )
 };
 

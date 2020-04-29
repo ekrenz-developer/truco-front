@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Paper, Typography, Drawer } from '@material-ui/core';
+import { Paper, Typography, Drawer, List } from '@material-ui/core';
 
 import useStyle from './style.js';
 
@@ -11,16 +11,77 @@ const Chat = ({ show }) => {
       variant='persistent'
       anchor='right'
       open={show}
+      className={classes.drawer}
+      classes={{ paper: classes.drawerPaper }}
     >
-      <Paper elevation={1} className={classes.container}>
+      <List>
         <Typography>Aca el chat de sala</Typography>
-      </Paper>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+        <Typography>Aca el chat de sala</Typography>
+      </List>
     </Drawer>
   )
 };
 
 Chat.propTypes = {
-  show: PropTypes.bool.isRequired
+  show: PropTypes.bool.isRequired,
+  type: PropTypes.string
 };
 
 export default Chat;

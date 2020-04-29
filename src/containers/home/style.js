@@ -7,11 +7,11 @@ const style = makeStyles({
   },
   header: {
     width: '100%',
-    height: '20%'
+    height: '8%'
   },
   room: {
     width: '100%',
-    height: '80%'
+    height: '92%'
   }
 })
 
