@@ -10,6 +10,13 @@
     "prettier/react"
   ],
   "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
   "plugins": [
     "prettier"
   ],
@@ -20,6 +27,7 @@
     "no-underscore-dangle": "off",
     "no-unreachable": "off",
     "import/prefer-default-export": "off",
-    "quotes": [2, "double"]
+    "quotes": [2, "double"],
+    "import/extensions": "off"
   }
 }

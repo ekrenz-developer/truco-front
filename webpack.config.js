@@ -19,16 +19,15 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
-          "babel-loader",
-          /*
+          {
+            loader: "babel-loader",
+          },
           {
             loader: "eslint-loader",
             options: {
-              babelPath: require.resolve("eslint"),
               configFile: path.resolve(__dirname, "./.eslintrc"),
             },
           },
-          */
         ],
       },
       /*
