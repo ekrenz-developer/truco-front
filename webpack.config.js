@@ -31,6 +31,20 @@ module.exports = {
           */
         ],
       },
+      /*
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "eslint-loader",
+            options: {
+              eslintPath: path.join(__dirname, "./.eslintrc"),
+            },
+          },
+        ],
+      },
+      */
       {
         test: /\.html$/,
         use: [
