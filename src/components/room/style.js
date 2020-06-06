@@ -1,45 +1,45 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { display } from '@material-ui/system';
+import { makeStyles } from "@material-ui/core/styles";
+import { drawerWidth } from "../../consts/style";
 
 const style = makeStyles((theme) => ({
   container: {
-    height: '100%',
-    transition: theme.transitions.create(['margin', 'width'], {
+    height: "100%",
+    transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
   chatRoomContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%'
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
   },
   tablesContainerMargin: {
-    height: '100%',
-    width: '100%'
+    height: "100%",
+    width: "100%",
   },
   tablesContainer: {
     padding: 10,
-    height: '100%'
+    height: "100%",
   },
   chatButtonContainer: {
-    justifyContent: 'flex-end',
-    padding: 5
+    justifyContent: "flex-end",
+    padding: 5,
   },
   roomTablesContainer: {
-    width: '85%'
+    width: "85%",
   },
   roomButtonContainer: {
-    width: '15%'
+    width: "15%",
   },
   containerShift: {
-    width: `calc(100% - ${240}px)`,
-    transition: theme.transitions.create(['margin', 'width'], {
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
+      duration: theme.transitions.duration.enteringScreen,
     }),
-    marginRight: 0
-  }
-}))
+    marginRight: 0,
+  },
+}));
 
 export default style;

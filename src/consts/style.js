@@ -1,2 +1,2 @@
 export const drawerWidth = 240;
-export const navbarWidth = 65;
+export const navbarHeight = 65;

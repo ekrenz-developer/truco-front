@@ -1,5 +1,5 @@
-const rootSaga = function* (){
-  
-}
+/*
+const rootSaga = function* () {};
 
 export default rootSaga;
+*/

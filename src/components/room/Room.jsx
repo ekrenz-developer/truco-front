@@ -99,13 +99,6 @@ const Room = () => {
       <Grid container>
         <Chat show={chatOpen} />
       </Grid>
-      {/*
-      <Grid item xs={3}>
-        <Grid container className={classes.chatRoomContainer}>
-          <Chat />
-        </Grid>
-      </Grid>
-      */}
     </Grid>
   )
 };

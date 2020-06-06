@@ -1,1 +1,1 @@
-export const isChatOpen = state => state.chat.isChatOpen;
+export const isChatOpen = (state) => state.chat.isChatOpen;

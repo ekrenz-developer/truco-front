@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,7 +9,8 @@ import useStyle from './style.js';
 import Navbar from '../../components/navbar/Navbar';
 import RoomList from '../../components/roomList/RoomList';
 import Room from '../../components/room/Room';
-import Chat from '../../components/chat/Chat';
+import Footer from '../../components/footer/Footer';
+import Layout from '../../components/layout/Layout';
 
 const Home = () => {
   const rooms = [
@@ -55,23 +56,30 @@ const Home = () => {
     <Chat show={chatOpen} />
   */
   return (
+    <Layout
+      header={<Navbar />}
+      footer={<Footer />}
+    >
+      <Room {...currentRoom} />
+    </Layout>
+    /*
     <React.Fragment>
-    
-    <Grid container className={classes.container}>
       <Navbar />
-      <Grid item className={classes.header}>
+      <Grid container className={classes.container}>
+        <Grid item className={classes.room}>
+          <Room {...currentRoom} />
+        </Grid>
+        {/*
+        <Grid item className={classes.header}> 
+          <RoomList rooms={rooms} />
+        </Grid>
         
       </Grid>
-      {/*
-      <Grid item className={classes.header}> 
-        <RoomList rooms={rooms} />
-      </Grid>
-      */}
-      <Grid item className={classes.room}>
-        <Room {...currentRoom} handleChatOpen={handleChatOpen} />
-      </Grid>
-    </Grid>
+      
+      <Footer />
     </React.Fragment>
+    */
+
   )
 };
 
