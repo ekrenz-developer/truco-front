@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Paper, Fab } from "@material-ui/core";
+import { Grid, Fab } from "@material-ui/core";
 import ChatIcon from "@material-ui/icons/Chat";
 import clsx from "clsx";
 
@@ -85,24 +85,22 @@ const Room = () => {
         [classes.containerShift]: chatOpen,
       })}
     >
-      <Paper variant="outlined" className={classes.tablesContainerMargin}>
-        <Grid container className={classes.container}>
-          <Grid item className={classes.roomTablesContainer}>
-            <Grid container className={classes.tablesContainer}>
-              {tables.map((table) => (
-                <Table key={table._id} name={table.name} />
-              ))}
-            </Grid>
-          </Grid>
-          <Grid item className={classes.roomButtonContainer}>
-            <Grid container className={classes.chatButtonContainer}>
-              <Fab color="primary" aria-label="chat" onClick={handleChatOpen} size="small">
-                <ChatIcon fontSize="small" />
-              </Fab>
-            </Grid>
+      <Grid container className={classes.container}>
+        <Grid item className={classes.roomTablesContainer}>
+          <Grid container className={classes.tablesContainer}>
+            {tables.map((table) => (
+              <Table key={table._id} name={table.name} />
+            ))}
           </Grid>
         </Grid>
-      </Paper>
+        <Grid item className={classes.roomButtonContainer}>
+          <Grid container className={classes.chatButtonContainer}>
+            <Fab color="primary" aria-label="chat" onClick={handleChatOpen} size="small">
+              <ChatIcon fontSize="small" />
+            </Fab>
+          </Grid>
+        </Grid>
+      </Grid>
       <Grid container>
         <Chat show={chatOpen} />
       </Grid>

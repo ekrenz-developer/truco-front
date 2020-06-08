@@ -1,2 +1,6 @@
 export const OPEN_CHAT = "CHAT_OPEN";
 export const CLOSE_CHAT = "CHAT_CLOSE";
+
+export const GET_TABLES_START = "GET_TABLES_START";
+export const GET_TABLES_ERROR = "GET_TABLES_ERROR";
+export const GET_TABLES_COMPLETE = "GET_TABLES_COMPLETE";

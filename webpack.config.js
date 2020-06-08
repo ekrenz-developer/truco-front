@@ -22,28 +22,16 @@ module.exports = {
           {
             loader: "babel-loader",
           },
+          /*
           {
             loader: "eslint-loader",
             options: {
               configFile: path.resolve(__dirname, "./.eslintrc"),
             },
           },
+          */
         ],
       },
-      /*
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "eslint-loader",
-            options: {
-              eslintPath: path.join(__dirname, "./.eslintrc"),
-            },
-          },
-        ],
-      },
-      */
       {
         test: /\.html$/,
         use: [

@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Home from "./containers/home/Home";
+import Room from "./containers/room/Room";
 
 const App = ({ store }) => (
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Room} />
       </Switch>
     </Router>
   </Provider>

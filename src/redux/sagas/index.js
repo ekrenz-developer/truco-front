@@ -1,5 +1,9 @@
-/*
-const rootSaga = function* () {};
+import { all } from 'redux-saga/effects';
 
-export default rootSaga;
-*/
+import get from "./tables";
+
+export default function* rootSaga() {
+  yield all([
+    get()
+  ]);
+};

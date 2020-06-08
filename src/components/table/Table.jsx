@@ -4,7 +4,7 @@ import { Card, Typography, CardContent, CardActions, Button } from "@material-ui
 
 import useStyle from "./style.js";
 
-const Table = ({ name }) => {
+const Table = ({ name, flower, numberPlayers, privated, password, players, points, timePerPLayer}) => {
   const classes = useStyle();
   return (
     <Card className={classes.container}>
@@ -21,11 +21,18 @@ const Table = ({ name }) => {
 };
 
 Table.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  flower: PropTypes.bool.isRequired,
+  numberPlayers: PropTypes.number.isRequired,
+  privated: PropTypes.bool.isRequired,
+  password: PropTypes.string,
+  players: PropTypes.array.isRequired,
+  points: PropTypes.number.isRequired,
+  timePerPLayer: PropTypes.number.isRequired,
 };
 
 Table.defaultProps = {
-  name: "table",
+  password: undefined,
 };
 
 export default Table;

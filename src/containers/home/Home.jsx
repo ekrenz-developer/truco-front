@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { Grid, Container } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 
+import { getTables } from '../../redux/actions/table.action';
 // import { openChat, closeChat } from '../../redux/actions/chat.action';
 // import { isChatOpen } from '../../redux/selectors/index';
 import useStyle from "./style.js";
 import Navbar from "../../components/navbar/Navbar";
 import Room from "../../components/room/Room";
-import Footer from "../../components/footer/Footer";
 import Layout from "../../components/layout/Layout";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  
   const rooms = [
     {
       id: 1,
@@ -40,41 +41,10 @@ const Home = () => {
   };
 
   const classes = useStyle();
-  // const dispatch = useDispatch();
-  // const chatOpen = useSelector(state => isChatOpen(state));
-  const [chatOpen, setChatOpen] = useState(false);
-
-  const handleChatOpen = (event) => {
-    /*
-    const payload = { isChatOpen: !chatOpen };
-    dispatch(chatOpen ? closeChat(payload) : openChat(payload));
-    */
-    setChatOpen(!chatOpen);
-  };
-  /*
-    <Chat show={chatOpen} />
-  */
   return (
-    <Layout header={<Navbar />} footer={<Footer />}>
+    <Layout header={<Navbar />}>
       <Room {...currentRoom} />
     </Layout>
-    /*
-    <React.Fragment>
-      <Navbar />
-      <Grid container className={classes.container}>
-        <Grid item className={classes.room}>
-          <Room {...currentRoom} />
-        </Grid>
-        {/*
-        <Grid item className={classes.header}> 
-          <RoomList rooms={rooms} />
-        </Grid>
-        
-      </Grid>
-      
-      <Footer />
-    </React.Fragment>
-    */
   );
 };
 
