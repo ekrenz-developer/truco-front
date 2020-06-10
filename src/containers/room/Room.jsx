@@ -16,7 +16,6 @@ const Room = () => {
   const classes = useStyle();
   const dispatch = useDispatch();
   const tables = useSelector(state => tablesResult(state));
-  console.log(tables)
   const isLoading = useSelector(state => isTablesLoading(state));
   const room = {_id: 1}
 
@@ -45,6 +44,7 @@ const Room = () => {
           players={table.players}
           points={table.points}
           timePerPLayer={table.timePerPlayer}
+          photo={"https://res.cloudinary.com/ekrenz/image/upload/v1591319195/truco/MYtinUser05_w1plaa.png"}
         />
       ));
     } else {
@@ -64,12 +64,6 @@ const Room = () => {
           <Grid item className={classes.roomTablesContainer}>
             <Grid container className={classes.tablesContainer}>
               { renderTables() }
-              {/*
-              {isTablesLoading && <div className={classes.header}>{header}</div>}
-              {tables.map((table) => (
-                <Table key={table._id} name={table.name} />
-              ))}
-              */}
             </Grid>
           </Grid>
           <Grid item className={classes.roomButtonContainer}>

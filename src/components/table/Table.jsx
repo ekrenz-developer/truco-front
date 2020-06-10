@@ -1,21 +1,56 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, Typography, CardContent, CardActions, Button } from "@material-ui/core";
+import { Card, CardHeader, Typography, CardContent, CardActionArea, Button, CardMedia } from "@material-ui/core";
+import { LocalFloristSharp, Person, Lock } from '@material-ui/icons';
 
 import useStyle from "./style.js";
 
-const Table = ({ name, flower, numberPlayers, privated, password, players, points, timePerPLayer}) => {
+const Table = ({ 
+  name, 
+  flower, 
+  numberPlayers, 
+  privated, 
+  password, 
+  players, 
+  points, 
+  timePerPLayer,
+  photo
+}) => {
   const classes = useStyle();
+
   return (
     <Card className={classes.container}>
-      <CardContent className={classes.content}>
-        <Typography variant="subtitle1">{name}</Typography>
-      </CardContent>
-      <CardActions>
+      <div className={classes.header}>
+        <div className={classes.headerTitle}>
+          <div className={classes.headerItem}>
+            { privated && <Lock /> }
+          </div>
+          <CardMedia
+            className={classes.media}
+            image={photo}
+            title={name}
+          />
+          <div className={classes.headerItem}>
+            <Person />
+            <Typography>{`${players.length}/${numberPlayers}`}</Typography>
+          </div>
+        </div>
+        <Typography className={classes.title}>{name}</Typography>
+      </div>
+      <div className={classes.content}>
+        <div className={classes.item}>
+          <Typography>{`${timePerPLayer}s`}</Typography> 
+        </div>
+        <div className={classes.item}>
+          <Typography>{points}</Typography> 
+        </div>
+        { flower && <LocalFloristSharp className={classes.item} /> }
+      </div>
+      <CardActionArea className={classes.antions}>
         <Button size="small" color="primary" className={classes.button}>
           Jugar
         </Button>
-      </CardActions>
+      </CardActionArea>
     </Card>
   );
 };

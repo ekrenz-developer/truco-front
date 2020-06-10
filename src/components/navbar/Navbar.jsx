@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from "@material-ui/core";
 import { MeetingRoom, AccountCircle } from "@material-ui/icons";
 
-
 import useStyle from "./style.js";
 
 const Navbar = () => {
