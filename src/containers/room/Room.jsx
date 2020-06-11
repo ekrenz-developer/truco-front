@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Fab, CircularProgress } from "@material-ui/core";
+import { Grid, Fab, CircularProgress, Zoom } from "@material-ui/core";
 import ChatIcon from "@material-ui/icons/Chat";
 import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
+import { useTheme } from '@material-ui/core/styles';
 
 import { getTables } from '../../redux/actions/table.action';
 import { isTablesLoading, tablesResult } from "../../redux/selectors/index";
@@ -15,9 +16,16 @@ import Layout from "../../components/layout/Layout";
 const Room = () => {
   const classes = useStyle();
   const dispatch = useDispatch();
+  const theme = useTheme();
+
   const tables = useSelector(state => tablesResult(state));
   const isLoading = useSelector(state => isTablesLoading(state));
   const room = {_id: 1}
+
+  const transitionDuration = {
+    enter: theme.transitions.duration.enteringScreen,
+    exit: theme.transitions.duration.leavingScreen,
+  };
 
   const [chatOpen, setChatOpen] = useState(false);
 
@@ -53,32 +61,48 @@ const Room = () => {
   };
 
   return (
-    <Layout header={<Navbar />}>
-      <Grid
-        container
-        className={clsx(classes.container, {
-          [classes.containerShift]: chatOpen,
-        })}
+    <div className={{position: "relative"}}>
+      <Layout header={<Navbar />}>
+        <Grid
+          container
+          className={clsx(classes.container, {
+            [classes.containerShift]: chatOpen,
+          })}
+        >
+          <Grid container className={classes.container}>
+            <Grid item className={classes.roomTablesContainer}>
+              <Grid container className={classes.tablesContainer}>
+                { renderTables() }
+              </Grid>
+            </Grid>
+            {/*
+            <Grid item className={classes.roomButtonContainer}>
+              <Grid container className={classes.chatButtonContainer}>
+                <Fab color="primary" aria-label="chat" onClick={handleChatOpen} size="small">
+                  <ChatIcon fontSize="small" />
+                </Fab>
+              </Grid>
+            </Grid>
+            */}
+          </Grid>
+          <Grid container>
+            <Chat show={chatOpen} />
+          </Grid>
+        </Grid>
+      </Layout>
+      <Zoom
+        timeout={transitionDuration}
+        in={!chatOpen}
+        unmountOnExit
+        style={{
+          transitionDelay: `${!chatOpen ? transitionDuration.exit : 0}ms`,
+        }}
       >
-        <Grid container className={classes.container}>
-          <Grid item className={classes.roomTablesContainer}>
-            <Grid container className={classes.tablesContainer}>
-              { renderTables() }
-            </Grid>
-          </Grid>
-          <Grid item className={classes.roomButtonContainer}>
-            <Grid container className={classes.chatButtonContainer}>
-              <Fab color="primary" aria-label="chat" onClick={handleChatOpen} size="small">
-                <ChatIcon fontSize="small" />
-              </Fab>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid container>
-          <Chat show={chatOpen} />
-        </Grid>
-      </Grid>
-    </Layout>
+        <Fab color="primary" aria-label="chat" onClick={handleChatOpen} size="small">
+          <ChatIcon fontSize="small" />
+        </Fab>
+      </Zoom>
+    </div>
   );
 };
 

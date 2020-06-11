@@ -26,10 +26,10 @@ const style = makeStyles((theme) => ({
     padding: 5,
   },
   roomTablesContainer: {
-    width: "85%",
+    width: "calc(100% - 50px)",
   },
   roomButtonContainer: {
-    width: "15%",
+    width: "50px",
   },
   containerShift: {
     width: `calc(100% - ${drawerWidth}px)`,
