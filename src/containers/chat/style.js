@@ -3,7 +3,7 @@ import { drawerWidth, navbarHeight } from "../../consts/style";
 
 const inputContainerHeight = "40";
 const send = "44";
-const headerHeight = "40";
+const headerHeight = "0";
 const closeButtonWidth = "40";
 
 const style = makeStyles({

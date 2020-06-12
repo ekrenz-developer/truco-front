@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Typography, Drawer, List, TextField, ListItem, ListItemText, IconButton, Toolbar } from "@material-ui/core";
+import { Typography, Drawer, List, TextField, ListItem, ListItemText, IconButton } from "@material-ui/core";
 import { Send, Close } from "@material-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 import useStyle from "./style.js";
 
-const Chat = ({ show }) => {
+const Chat = ({ chatOpen }) => {
   const classes = useStyle();
-  const [chatOpen, setChatOpen] = useState(true);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
@@ -30,10 +30,6 @@ const Chat = ({ show }) => {
     setNewMessage(event.target.value);
   }
 
-  const handleCloseChat = () => {
-    setChatOpen(!chatOpen);
-  };
-
   return (
     <Drawer
       variant="persistent"
@@ -42,15 +38,17 @@ const Chat = ({ show }) => {
       className={classes.drawer}
       classes={{ paper: classes.drawerPaper }}
     >
+      {/*
       <div className={classes.header}>
         <Typography className={classes.title}>Chat</Typography>
         <IconButton
           className={classes.close}
-          onClick={handleCloseChat}
+          onClick={handleChatOpen}
         >
           <Close />
         </IconButton>
       </div>
+      */}
       <List className={classes.list} disablePadding={true} dense>
         {
           messages.map((message, index) => (
@@ -78,7 +76,11 @@ const Chat = ({ show }) => {
 };
 
 Chat.propTypes = {
-  show: PropTypes.bool.isRequired,
+  chatOpen: PropTypes.bool,
+};
+
+Chat.defaultProps = {
+  chatOpen: false,
 };
 
 export default Chat;

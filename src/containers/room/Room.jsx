@@ -1,33 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Fab, CircularProgress, Zoom } from "@material-ui/core";
-import ChatIcon from "@material-ui/icons/Chat";
+import { Grid, CircularProgress } from "@material-ui/core";
 import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
-import { useTheme } from '@material-ui/core/styles';
 
 import { getTables } from '../../redux/actions/table.action';
 import { isTablesLoading, tablesResult } from "../../redux/selectors/index";
 import useStyle from "./style.js";
 import Table from "../../components/table/Table";
-import Chat from "../../components/chat/Chat";
+import Chat from "../chat/Chat";
 import Navbar from "../../components/navbar/Navbar";
 import Layout from "../../components/layout/Layout";
 
 const Room = () => {
   const classes = useStyle();
   const dispatch = useDispatch();
-  const theme = useTheme();
 
   const tables = useSelector(state => tablesResult(state));
   const isLoading = useSelector(state => isTablesLoading(state));
-  const room = {_id: 1}
-
-  const transitionDuration = {
-    enter: theme.transitions.duration.enteringScreen,
-    exit: theme.transitions.duration.leavingScreen,
-  };
-
   const [chatOpen, setChatOpen] = useState(false);
+  const room = {_id: 1}
 
   const handleChatOpen = () => {
     setChatOpen(!chatOpen);
@@ -61,8 +52,14 @@ const Room = () => {
   };
 
   return (
-    <div className={{position: "relative"}}>
-      <Layout header={<Navbar />}>
+    <>
+      <Layout 
+        header={
+          <Navbar 
+            chat={true}
+            handleChatOpen={handleChatOpen}
+          />
+        }>
         <Grid
           container
           className={clsx(classes.container, {
@@ -75,34 +72,13 @@ const Room = () => {
                 { renderTables() }
               </Grid>
             </Grid>
-            {/*
-            <Grid item className={classes.roomButtonContainer}>
-              <Grid container className={classes.chatButtonContainer}>
-                <Fab color="primary" aria-label="chat" onClick={handleChatOpen} size="small">
-                  <ChatIcon fontSize="small" />
-                </Fab>
-              </Grid>
-            </Grid>
-            */}
           </Grid>
           <Grid container>
-            <Chat show={chatOpen} />
+            <Chat chatOpen={chatOpen} />
           </Grid>
         </Grid>
       </Layout>
-      <Zoom
-        timeout={transitionDuration}
-        in={!chatOpen}
-        unmountOnExit
-        style={{
-          transitionDelay: `${!chatOpen ? transitionDuration.exit : 0}ms`,
-        }}
-      >
-        <Fab color="primary" aria-label="chat" onClick={handleChatOpen} size="small">
-          <ChatIcon fontSize="small" />
-        </Fab>
-      </Zoom>
-    </div>
+    </>
   );
 };
 

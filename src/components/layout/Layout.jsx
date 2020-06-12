@@ -22,6 +22,7 @@ Layout.propTypes = {
 
 Layout.defaultProps = {
   header: undefined,
+  subHeader: undefined,
   footer: undefined,
 };
 

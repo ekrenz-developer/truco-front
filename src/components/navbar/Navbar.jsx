@@ -1,13 +1,21 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from "@material-ui/core";
-import { MeetingRoom, AccountCircle } from "@material-ui/icons";
+import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem, Zoom } from "@material-ui/core";
+import { MeetingRoom, AccountCircle, Chat } from "@material-ui/icons";
+import PropTypes from "prop-types";
+import { useTheme } from '@material-ui/core/styles';
 
 import useStyle from "./style.js";
 
-const Navbar = () => {
+const Navbar = ({ chat, handleChatOpen }) => {
   const classes = useStyle();
   const [userMenu, setUserMenu] = useState(false);
   const [posUserMenu, setPosUserMenu] = useState(null);
+  const theme = useTheme();
+
+  const transitionDuration = {
+    enter: theme.transitions.duration.enteringScreen,
+    exit: theme.transitions.duration.leavingScreen,
+  };
 
   const handleUserMenu = (event) => {
     setUserMenu(!userMenu);
@@ -31,7 +39,26 @@ const Navbar = () => {
             <MeetingRoom />
             <Typography>Sala 1</Typography>
           </IconButton>
-
+          {chat &&
+            /*
+            <Zoom
+              timeout={transitionDuration}
+              in={!chatOpen}
+              unmountOnExit
+              style={{
+                transitionDelay: `${!chatOpen ? transitionDuration.exit : 0}ms`,
+              }}
+            >*/
+              <IconButton
+                color="inherit"
+                edge="end"
+                aria-label="chat"
+                onClick={handleChatOpen}
+              >
+                <Chat fontSize="small" />
+              </IconButton>
+            /*</Zoom>*/
+          }
           <IconButton
             edge="end"
             color="inherit"
@@ -56,6 +83,16 @@ const Navbar = () => {
       <div className={classes.navbarRelleno} />
     </>
   );
+};
+
+Navbar.propTypes = {
+  chat: PropTypes.bool,
+  handleChatOpen: PropTypes.func,
+};
+
+Navbar.defaultProps = {
+  chat: false,
+  handleChatOpen: () => {},
 };
 
 export default Navbar;

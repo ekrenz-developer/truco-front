@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { drawerWidth } from "../../consts/style";
+import { drawerWidth, navbarHeight } from "../../consts/style";
 
 const style = makeStyles((theme) => ({
   container: {
@@ -26,7 +26,8 @@ const style = makeStyles((theme) => ({
     padding: 5,
   },
   roomTablesContainer: {
-    width: "calc(100% - 50px)",
+    //width: "calc(100% - 50px)",
+    width: "100%",
   },
   roomButtonContainer: {
     width: "50px",
@@ -38,6 +39,10 @@ const style = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginRight: 0,
+  },
+  fab: {
+    position: "absolute",
+    top: `${navbarHeight}px`,
   },
 }));
 

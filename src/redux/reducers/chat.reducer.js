@@ -9,13 +9,13 @@ const chat = (state = initialState, action) => {
     case OPEN_CHAT:
       return {
         ...state,
-        ...action.payload,
+        isChatOpen: action.payload,
       };
       break;
     case CLOSE_CHAT:
       return {
         ...state,
-        ...action.payload,
+        isChatOpen: action.payload,
       };
       break;
     default:
