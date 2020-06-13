@@ -1,15 +1,36 @@
-import React, { useState } from "react";
-import { Typography, Drawer, List, TextField, ListItem, ListItemText, IconButton } from "@material-ui/core";
+import React, { useState, useRef, useEffect, createRef } from "react";
+import { Typography, Drawer, List, TextField, ListItem, ListItemText, IconButton, RootRef } from "@material-ui/core";
 import { Send, Close } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import useStyle from "./style.js";
 
+const useScroll = () => {
+  const htmlElRef = useRef();
+  const executeScroll = () => {
+    console.log(htmlElRef);
+    //console.log(htmlElRef)
+    //window.scrollTo(0, htmlElRef.current.offsetTop)
+    /*
+    window.scrollTo({
+      top: htmlElRef.current.offsetTop,
+      left: 0,
+      behavior: "smooth"
+    })
+    */
+    //htmlElRef.scrollIntoView({ behavior: "smooth" });
+  }
+
+  return [executeScroll, htmlElRef]
+}
+
 const Chat = ({ chatOpen }) => {
   const classes = useStyle();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  //const [executeScroll, htmlElRef] = useScroll()
+  const scrollRef = createRef();
 
   const handleSendMessageEnter = (event) => {
     if (event.key === "Enter") {
@@ -23,11 +44,18 @@ const Chat = ({ chatOpen }) => {
       tempMessages.push(newMessage);
       setMessages(tempMessages);
       setNewMessage("");
+      handleScrollToBottom();
     }
   };
 
   const handleChangeMessage = (event) => {
     setNewMessage(event.target.value);
+  }
+
+  const handleScrollToBottom = () => {
+    //console.log(messages.length);
+    //scrollRef.current.scrollTo(0, messages.length);
+    scrollRef.current.scrollIntoView({block: 'end', behavior: 'smooth'});
   }
 
   return (
@@ -57,6 +85,8 @@ const Chat = ({ chatOpen }) => {
             </ListItem>
           ))
         }
+        
+        <div className={{ height: "36px"}} ref={scrollRef} />
       </List>
       <div className={classes.inputContainer}>
         <TextField

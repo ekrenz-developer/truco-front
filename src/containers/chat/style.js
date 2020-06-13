@@ -25,7 +25,7 @@ const style = makeStyles({
   },
   list: {
     height: `calc(100% - ${inputContainerHeight}px - ${headerHeight}px)`,
-    overflowY: "scroll"
+    overflowY: "scroll",
   },
   input: {
     height: "70%",
