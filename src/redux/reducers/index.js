@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import chat from "./chat.reducer";
-import table from "./table.reducer";
+import room from "./room.reducer";
 
 const rootReducer = combineReducers({
   chat,
-  table,
+  room,
 });
 
 export default rootReducer;

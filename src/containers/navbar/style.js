@@ -12,6 +12,12 @@ const style = makeStyles({
   navbarRelleno: {
     height: navbarHeight,
   },
+  rooms: {
+    width: "200px",
+  },
+  room: {
+    
+  }
 });
 
 export default style;

@@ -2,9 +2,11 @@ import { GET_TABLES_START, GET_TABLES_ERROR, GET_TABLES_COMPLETE } from "../../c
 
 const initialState = {
   tables: undefined,
+  isLoading: false,
+  currentRoom: undefined
 };
 
-const table = (state = initialState, action) => {
+const room = (state = initialState, action) => {
   switch (action.type) {
     case GET_TABLES_START:
       return {
@@ -31,4 +33,4 @@ const table = (state = initialState, action) => {
   }
 };
 
-export default table;
+export default room;

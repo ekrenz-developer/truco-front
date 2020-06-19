@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Grid, CircularProgress } from "@material-ui/core";
 import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import { getTables } from '../../redux/actions/table.action';
+import { getTablesAction } from '../../redux/actions/room.action';
 import { isTablesLoading, tablesResult } from "../../redux/selectors/index";
 import useStyle from "./style.js";
 import Table from "../../components/table/Table";
 import Chat from "../chat/Chat";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../navbar/Navbar";
 import Layout from "../../components/layout/Layout";
 
 const Room = () => {
   const classes = useStyle();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const tables = useSelector(state => tablesResult(state));
   const isLoading = useSelector(state => isTablesLoading(state));
@@ -24,26 +26,39 @@ const Room = () => {
     setChatOpen(!chatOpen);
   };
 
+  const handleEntryGame = (id, password = undefined) => {
+    // logica para verificar clave de ingreso de mesa privada
+    //let id = event.currentTarget.ariaLabel;
+    if (!password) {
+      console.log(`Ingreso a mesa: ${id}`);
+    } else {
+      console.log(`Ingreso a mesa privada: ${id}`);
+    }
+
+    history.push("/game");
+  }
+
   useEffect(() => {
     if (room && !tables) {
-      dispatch(getTables({ room }));
+      dispatch(getTablesAction({ room }));
     }
-  })
+  }, [])
 
   const renderTables = () => {
     if (!isLoading && tables) {
       return tables.map((table) => (
         <Table 
           key={table._id}
+          id={table._id}
           name={table.name}
           flower={table.flower}
           numberPlayers={table.numberPlayers}
           privated={table.private}
-          password={table.password}
           players={table.players}
           points={table.points}
           timePerPLayer={table.timePerPlayer}
           photo={"https://res.cloudinary.com/ekrenz/image/upload/v1591319195/truco/MYtinUser05_w1plaa.png"}
+          handleEntryGame={handleEntryGame}
         />
       ));
     } else {
