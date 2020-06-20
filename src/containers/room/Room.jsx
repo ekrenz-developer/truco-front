@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { getTablesAction, setCurrentRoom, getRandomRoom } from '../../redux/actions/room.action';
+import { getTablesAction, setCurrentRoomAction, getRandomRoomAction } from '../../redux/actions/room.action';
 import {
   isTablesLoading, 
   tablesResult, 
@@ -29,7 +29,6 @@ const Room = () => {
   const randomRoom = useSelector(state => randomRoomSelector(state));
   const currentRoom = useSelector(state => currentRoomSelector(state));
   const [chatOpen, setChatOpen] = useState(false);
-  const room = {_id: 1}
 
   const handleChatOpen = () => {
     setChatOpen(!chatOpen);
@@ -51,15 +50,20 @@ const Room = () => {
     //if (room && !tables) {
       //console.log("aca");
     //}
-
-    //dispatch(getRandomRoom());
-    //if (!isRandomRoomLoading && randomRoom) {
-      let room = 3;
-      dispatch(setCurrentRoom({ room }));
-      dispatch(getTablesAction({ currentRoom }));
-    //}
-    
-  }, [])
+    if (!randomRoom) {
+      dispatch(getRandomRoomAction());
+    }
+    //console.log("salaa random " + randomRoom);
+    if (!isRandomRoomLoading && randomRoom) {
+      //let room = 3;
+      if (!currentRoom) {
+        dispatch(setCurrentRoomAction(randomRoom));
+      }
+      if (currentRoom && !tables) {
+        dispatch(getTablesAction(currentRoom));
+      }
+    }
+  }, [randomRoom, isRandomRoomLoading, currentRoom])
 
   const renderTables = () => {
     if (!isLoading && tables) {

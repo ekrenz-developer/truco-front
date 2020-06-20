@@ -33,16 +33,10 @@ export function* getRooms() {
 export function* getRandomRoom() {
   try {
     const response = yield call(apiCall, "/rooms/random", null, null, 'GET');
-/*
-    const response = {
-      data: {
-        data: "3"
-      }
-    }
-*/
-    yield put({ type: GET_RANDON_ROOM_COMPLETE, response});
+
+    yield put({ type: GET_RANDOM_ROOM_COMPLETE, response});
   } catch (err) {
-    yield put({ type: GET_RANDON_ROOM_ERROR, err});
+    yield put({ type: GET_RANDOM_ROOM_ERROR, err});
   }
 }
 

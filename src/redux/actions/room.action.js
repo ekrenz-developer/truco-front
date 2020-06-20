@@ -14,11 +14,11 @@ export const getRoomsAction = () => ({
   type: GET_ROOMS_START,
 });
 
-export const getRandomRoom = () => ({
+export const getRandomRoomAction = () => ({
   type: GET_RANDOM_ROOM_START,
 })
 
-export const setCurrentRoom = (payload) => ({
+export const setCurrentRoomAction = (payload) => ({
   type: SET_CURRENT_ROOM,
-  payload,
+  payload: payload,
 });

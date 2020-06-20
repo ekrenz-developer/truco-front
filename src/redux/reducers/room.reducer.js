@@ -12,11 +12,13 @@ import {
 } from "../../consts/actionTypes";
 
 const initialState = {
-  tables: undefined,
   isLoading: false,
-  currentRoom: undefined,
-  rooms: undefined,
+  tables: undefined,
   isRoomsLoading: false,
+  rooms: undefined,
+  isRandomRoomLoading: false,
+  randomRoom: undefined,
+  currentRoom: undefined,
 };
 
 const room = (state = initialState, action) => {
@@ -83,7 +85,7 @@ const room = (state = initialState, action) => {
     case SET_CURRENT_ROOM:
       return {
         ...state,
-        currentRoom: action.payload.room
+        currentRoom: action.payload
       }
       break;
     default:

@@ -17,8 +17,8 @@ import { MeetingRoom, AccountCircle, Chat } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getRoomsAction, setCurrentRoom } from '../../redux/actions/room.action';
-import { isRoomsLoading, roomsResult, currentRoom } from "../../redux/selectors/index";
+import { getRoomsAction, setCurrentRoomAction } from '../../redux/actions/room.action';
+import { isRoomsLoading, roomsResult, currentRoomSelector } from "../../redux/selectors/index";
 import useStyle from "./style.js";
 
 const Navbar = ({ chat, handleChatOpen }) => {
@@ -29,6 +29,7 @@ const Navbar = ({ chat, handleChatOpen }) => {
   const dispatch = useDispatch();
   const rooms = useSelector(state => roomsResult(state));
   const isLoading = useSelector(state => isRoomsLoading(state));
+  const currentRoom = useSelector(state => currentRoomSelector(state));
 
   const handleUserMenu = (event) => {
     setUserMenu(!userMenu);
@@ -44,7 +45,7 @@ const Navbar = ({ chat, handleChatOpen }) => {
 
   const handleEntryRoom = (room) => () => {
     //console.log(`Entro a la sala: ${id}`);
-    dispatch(setCurrentRoom({ room }));
+    dispatch(setCurrentRoomAction(room));
     handleRoomsOpen();
   };
 
@@ -54,7 +55,7 @@ const Navbar = ({ chat, handleChatOpen }) => {
         <ListItem
           key={room._id}
           button
-          onClick={handleEntryRoom(room._id)}
+          onClick={handleEntryRoom(room)}
         >
           <ListItemText className={classes.room}>{ room.name }</ListItemText>
         </ListItem>
@@ -83,8 +84,8 @@ const Navbar = ({ chat, handleChatOpen }) => {
             onClick={handleRoomsOpen}
           >
             <MeetingRoom />
-            <Typography>Sala 1</Typography>
           </IconButton>
+          {currentRoom && <Typography>{currentRoom.name}</Typography>}
           {chat &&
             /*
             <Zoom
