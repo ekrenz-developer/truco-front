@@ -17,8 +17,8 @@ import { MeetingRoom, AccountCircle, Chat } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getRoomsAction} from '../../redux/actions/room.action';
-import { isRoomsLoading, roomsResult } from "../../redux/selectors/index";
+import { getRoomsAction, setCurrentRoom } from '../../redux/actions/room.action';
+import { isRoomsLoading, roomsResult, currentRoom } from "../../redux/selectors/index";
 import useStyle from "./style.js";
 
 const Navbar = ({ chat, handleChatOpen }) => {
@@ -42,8 +42,10 @@ const Navbar = ({ chat, handleChatOpen }) => {
     };
   };
 
-  const handleEntryRoom = (id) => () => {
-    console.log(`Entro a la sala: ${id}`);
+  const handleEntryRoom = (room) => () => {
+    //console.log(`Entro a la sala: ${id}`);
+    dispatch(setCurrentRoom({ room }));
+    handleRoomsOpen();
   };
 
   const renderRooms = () => {

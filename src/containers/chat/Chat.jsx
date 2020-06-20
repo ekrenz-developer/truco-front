@@ -3,6 +3,7 @@ import { Typography, Drawer, List, TextField, ListItem, ListItemText, IconButton
 import { Send, Close } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
+import clsx from "clsx";
 
 import useStyle from "./style.js";
 
@@ -25,7 +26,7 @@ const useScroll = () => {
   return [executeScroll, htmlElRef]
 }
 
-const Chat = ({ chatOpen }) => {
+const Chat = ({ chatOpen, type }) => {
   const classes = useStyle();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -64,7 +65,16 @@ const Chat = ({ chatOpen }) => {
       anchor="right"
       open={chatOpen}
       className={classes.drawer}
-      classes={{ paper: classes.drawerPaper }}
+      classes={ type == "G" ?
+        { paper: classes.drawerPaperGame } : 
+        { paper: classes.drawerPaper }
+      }
+      /*
+      classes={clsx({ paper: classes.drawerPaper }, {
+        [{ paper: classes.drawerPaperGame }]: type === "G",
+        })
+      }
+      */
     >
       {/*
       <div className={classes.header}>
@@ -107,10 +117,12 @@ const Chat = ({ chatOpen }) => {
 
 Chat.propTypes = {
   chatOpen: PropTypes.bool,
+  type: PropTypes.string,
 };
 
 Chat.defaultProps = {
   chatOpen: false,
+  type: "R",
 };
 
 export default Chat;

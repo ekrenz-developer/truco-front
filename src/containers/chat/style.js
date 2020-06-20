@@ -23,6 +23,10 @@ const style = makeStyles({
     top: navbarHeight,
     height: `calc(100% - ${navbarHeight}px)`,
   },
+  drawerPaperGame: {
+    width: drawerWidth,
+    height: "100%",
+  },
   list: {
     height: `calc(100% - ${inputContainerHeight}px - ${headerHeight}px)`,
     overflowY: "scroll",

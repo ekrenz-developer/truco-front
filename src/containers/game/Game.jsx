@@ -20,7 +20,7 @@ const Game = () => {
             </Grid>
           </Grid>
           <Grid container>
-            <Chat chatOpen={true} />
+            <Chat chatOpen={true} type="G" />
           </Grid>
         </Grid>
     </Layout>

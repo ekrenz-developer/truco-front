@@ -4,7 +4,11 @@ import {
   GET_TABLES_COMPLETE,
   GET_ROOMS_START,
   GET_ROOMS_ERROR,
-  GET_ROOMS_COMPLETE
+  GET_ROOMS_COMPLETE,
+  SET_CURRENT_ROOM,
+  GET_RANDOM_ROOM_START,
+  GET_RANDOM_ROOM_ERROR,
+  GET_RANDOM_ROOM_COMPLETE
 } from "../../consts/actionTypes";
 
 const initialState = {
@@ -55,6 +59,31 @@ const room = (state = initialState, action) => {
         ...state,
         isRoomsLoading: false,
         rooms: action.response.data.data
+      }
+      break;
+    case GET_RANDOM_ROOM_START:
+      return {
+        ...state,
+        isRandomRoomLoading: true,
+      }
+      break;
+    case GET_RANDOM_ROOM_ERROR:
+      return {
+        ...state,
+        isRandomRoomLoading: false,
+      }
+      break;
+    case GET_RANDOM_ROOM_COMPLETE:
+      return {
+        ...state,
+        isRandomRoomLoading: false,
+        randomRoom: action.response.data.data
+      }
+      break;
+    case SET_CURRENT_ROOM:
+      return {
+        ...state,
+        currentRoom: action.payload.room
       }
       break;
     default:
