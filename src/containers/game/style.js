@@ -4,6 +4,7 @@ import { drawerWidth, navbarHeight } from "../../consts/style";
 const style = makeStyles((theme) => ({
   container: {
     height: "100%",
+    width: "100%",
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -25,7 +26,7 @@ const style = makeStyles((theme) => ({
     justifyContent: "flex-end",
     padding: 5,
   },
-  roomTablesContainer: {
+  playersContainer: {
     //width: "calc(100% - 50px)",
     width: "100%",
   },

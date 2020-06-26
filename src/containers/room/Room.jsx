@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { getTablesAction, setCurrentRoomAction, getRandomRoomAction } from '../../redux/actions/room.action';
+import { setCurrentTableAction } from "../../redux/actions/game.action";
 import {
   isTablesLoading, 
   tablesResult, 
@@ -42,7 +43,44 @@ const Room = () => {
     } else {
       console.log(`Ingreso a mesa privada: ${id}`);
     }
+    
+    // logica para obtener datos de una mesa de juego por el id
+    let currentTable = {
+      "_id": 4,
+      "name": "table4",
+      "flower": true,
+      "points": 30,
+      "numberPlayers": 6,
+      "timePerPlayer": 15,
+      "private": false,
+      "players": [
+        {
+          "name": "player1",
+          "photo": "https://res.cloudinary.com/ekrenz/image/upload/v1591319207/truco/MYtinUser08_q9ef5w.png"
+        },
+        {
+          "name": "player2",
+          "photo": "https://res.cloudinary.com/ekrenz/image/upload/v1591319206/truco/MYtinUser09_x30gxu.png"
+        },
+        {
+          "name": "player3",
+          "photo": "https://res.cloudinary.com/ekrenz/image/upload/v1591319206/truco/MYtinUser07_vreb3i.png"
+        },
+        {
+          "name": "player4",
+          "photo": "https://res.cloudinary.com/ekrenz/image/upload/v1591319206/truco/MYtinUser10_ujehgx.png"
+        },
+        {
+          "name": "player5",
+          "photo": "https://res.cloudinary.com/ekrenz/image/upload/v1591319199/truco/MYtinUser04_q51gzz.png"
+        }
+      ]
+    };
 
+    if (currentTable) {
+    dispatch(setCurrentTableAction(currentTable));
+    }
+    
     history.push("/game");
   }
 
@@ -50,7 +88,7 @@ const Room = () => {
     //if (room && !tables) {
       //console.log("aca");
     //}
-    if (!randomRoom) {
+    if (!randomRoom && !isRandomRoomLoading) {
       dispatch(getRandomRoomAction());
     }
     //console.log("salaa random " + randomRoom);

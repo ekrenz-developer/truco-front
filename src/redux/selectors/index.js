@@ -6,3 +6,4 @@ export const isRoomsLoading = (state) => state.room.isRoomsLoading;
 export const isRandomRoomLoadingSelector = (state) => state.room.isRandomRoomLoading;
 export const randomRoomSelector = (state) => state.room.randomRoom;
 export const currentRoomSelector = (state) => state.room.currentRoom;
+export const currentTableSelector = (state) => state.game.currentTable;

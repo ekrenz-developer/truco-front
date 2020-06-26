@@ -1,31 +1,15 @@
-import { GET_TABLES_START, GET_TABLES_ERROR, GET_TABLES_COMPLETE } from "../../consts/actionTypes";
+import { SET_CURRENT_TABLE } from "../../consts/actionTypes";
 
 const initialState = {
-  tables: undefined,
-  isLoading: false,
-  currentRoom: undefined
+  currentTable: undefined,
 };
 
-const room = (state = initialState, action) => {
+const game = (state = initialState, action) => {
   switch (action.type) {
-    case GET_TABLES_START:
+    case SET_CURRENT_TABLE:
       return {
         ...state,
-        isLoading: true,
-      };
-      break;
-    case GET_TABLES_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        tables: []
-      };
-      break;
-    case GET_TABLES_COMPLETE:
-      return {
-        ...state,
-        isLoading: false,
-        tables: action.response.data.data,
+        currentTable: action.payload,
       };
       break;
     default:
@@ -33,4 +17,4 @@ const room = (state = initialState, action) => {
   }
 };
 
-export default room;
+export default game;
