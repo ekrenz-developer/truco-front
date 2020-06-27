@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
+import { Person } from '@material-ui/icons';
 
 import useStyle from "./style.js";
 import Layout from "../../components/layout/Layout";
@@ -34,6 +35,8 @@ const Game = () => {
           <div className={classes.playersContainer}>
             { renderPlayers() }
           </div>
+          <Person fontSize="large" />
+          <Typography>{`${currentTable.players.length}/${currentTable.numberPlayers}`}</Typography>
         </Grid>
         <Grid container>
           <Chat chatOpen={true} type="G" />
